@@ -1,0 +1,23 @@
+common: &common
+  redis_key: "avarus"
+
+production:
+  <<: *common
+  redis:
+    :host: 'localhost'
+    :port: '6379'
+    :db: '1'
+
+development:
+  <<: *common
+  redis:
+    :host: 'localhost'
+    :port: '6379'
+    :db: '2'
+
+test:
+  <<: *common
+  redis:
+    :host: 'localhost'
+    :port: '6379'
+    :db: '3'
