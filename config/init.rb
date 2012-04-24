@@ -13,6 +13,6 @@ $:.unshift File.expand_path("../", File.dirname(__FILE__))
 require 'lib/short_url'
 
 ShortUrl.configure do |config|
-  config.redis = Redis.new APP_CONFIG['redis']
-  config.rkey = 'avarus'
+  config.redis = Redis.new APP_CONFIG[:redis]
+  config.rkey = APP_CONFIG[:redis_key]
 end

@@ -92,7 +92,7 @@ class ShortUrl
   end
 
   def validate_url_uniqueness
-    self.class.find(@url) ? false : true
+    self.class.find_by_url(@url) ? false : true
   end
 
 end
