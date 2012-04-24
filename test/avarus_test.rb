@@ -12,7 +12,7 @@ class AvarusTest < Test::Unit::TestCase
   end
 
   def app
-    Cuba
+    Avarus
   end
 
   def test_get_homepage

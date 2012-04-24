@@ -5,7 +5,9 @@ require 'config/init'
 require 'cuba'
 require 'json'
 
-Cuba.define do
+class Avarus < Cuba; end
+
+Avarus.define do
   on get do
     on root do
       res.write 'Hello World'
