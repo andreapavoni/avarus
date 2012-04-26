@@ -1,18 +1,33 @@
-# AVARUS: a minimalistic url shortener built with code parsimony in mind
+# AVARUS: a minimalistic URL shortener built with code parsimony in mind
 
-## Why
-Because less is more.
+An URL shortener's main goal should be about saving charatcters for some
+reason (es: microblogging platforms). But what about saving code, ram
+and libraries? Avarus tries to answer this question with a minimum set of
+tools:
 
-### Install and Run
+* [Cuba](http://cuba.is): a micro web framework
+* redis: both the [gem](https://github.com/redis/redis-rb) and [server](http://redis.io)
 
-* download/install/setup/run [redis](http://redis.io)
-* clone/download this repo
-* `cd <avarus_dir> && bundle setup && bundle exec rake`
+## Getting started
+
+### Requirements
+
+* ruby 1.9.x (tested on 1.9.3p125)
+* [redis](http://redis.io): I've used the v2.4.9
+
+### Install and run
+
+* start redis server
+* download with `git clone <this repo>`
+* install required gems: `cd <avarus_dir> && bundle install`
+* (optional) run tests: `bundle exec rake`
 * `rackup` or just launch any other Rack-compliant ruby webserver
 
-### Testing
+## Todo
 
-`bundle exec rake`
+* click counter
+* basic authentication
+* stats
 
 ## Contributions & Bugs
 
@@ -20,5 +35,4 @@ Because less is more.
 * *the hard way:* repeat the above points, then share your love and send a pull request.
 
 ## License
-Copyright (c) 2012 Andrea Pavoni http://andreapavoni.com. See LICENSE
-for details
+Copyright (c) 2012 Andrea Pavoni http://andreapavoni.com. See LICENSE for details
