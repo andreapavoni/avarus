@@ -27,13 +27,13 @@ Avarus.define do
       on param('url') do |url|
         if link = ShortUrl.find_or_create(url.to_s)
           res["Content-Type"] = "application/json"
-          res.write JSON.pretty_generate({id: link.id, url: link.url})
+          res.write JSON.pretty_generate({
+            id: "#{APP_CONFIG[:app_url]}/#{link.id}",
+            url: link.url}
+          )
         else
           res.status = 400
         end
-      end
-      on true do
-        res.status = 400
       end
     end
   end

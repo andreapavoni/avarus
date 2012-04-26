@@ -54,8 +54,8 @@ describe Avarus do
       end
 
       it "returns id and url values" do
-        @short_url.id.must_equal @result['id']
-        @short_url.url.must_equal @result['url']
+        @result['id'].must_match /#{@short_url.id}$/
+        @result['url'].must_equal @short_url.url
       end
     end
 

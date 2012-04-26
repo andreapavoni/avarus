@@ -11,6 +11,7 @@ production:
 
 development:
   <<: *common
+  :app_url: 'http://localhost:9292'
   :redis:
     :host: 'localhost'
     :port: '6379'
@@ -18,6 +19,7 @@ development:
 
 test:
   <<: *common
+  :app_url: 'http://localhost'
   :redis:
     :host: 'localhost'
     :port: '6379'
