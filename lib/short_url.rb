@@ -1,7 +1,7 @@
 require 'redis'
 
 class ShortUrl
-  Config = Struct.new(:redis, :rkey)
+  Config = Struct.new(:redis, :rkey, :id_size)
 
   attr_accessor :url, :id
 
@@ -20,7 +20,7 @@ class ShortUrl
     end
 
     def config
-      @config ||= Config.new(Redis.new, 'shorturl')
+      @config ||= Config.new(Redis.new, 'shorturl', 4)
     end
 
     def find(id)
