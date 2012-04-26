@@ -10,7 +10,7 @@ class Avarus < Cuba; end
 Avarus.define do
   on get do
     on root do
-      res.write 'Hello World'
+      res.write File.read('views/index.html')
     end
 
     on ":id" do |id|
