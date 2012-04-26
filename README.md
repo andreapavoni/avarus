@@ -20,6 +20,7 @@ tools:
 * start redis server
 * download with `git clone <this repo>`
 * install required gems: `cd <avarus_dir> && bundle install`
+* (optional) edit settings in `<avarus_dir>/config/app_config.yml`
 * (optional) run tests: `bundle exec rake`
 * `rackup` or just launch any other Rack-compliant ruby webserver
 
@@ -35,4 +36,4 @@ tools:
 * *the hard way:* repeat the above points, then share your love and send a pull request.
 
 ## License
-Copyright (c) 2012 Andrea Pavoni http://andreapavoni.com. See LICENSE for details
+Copyright (c) 2012 Andrea Pavoni http://andreapavoni.com. See [MIT-LICENSE](/apeacox/avarus/blob/master/MIT-LICENSE) for details.
