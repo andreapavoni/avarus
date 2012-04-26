@@ -1,7 +1,7 @@
 require 'bundler'
 require 'rake/testtask'
 
-APP_ENV = (ENV['RACK_ENV'] || 'test').to_sym
+APP_ENV = 'test'
 
 Bundler.setup :default, APP_ENV
 Bundler.require :default, APP_ENV

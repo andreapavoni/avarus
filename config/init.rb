@@ -1,6 +1,6 @@
 require 'bundler'
 
-APP_ENV = (ENV['RACK_ENV'] || 'development')
+APP_ENV ||= (ENV['RACK_ENV'] || 'development')
 
 Bundler.setup(:default, APP_ENV)
 Bundler.require(:default, APP_ENV)
@@ -15,4 +15,5 @@ require 'lib/short_url'
 ShortUrl.configure do |config|
   config.redis = Redis.new APP_CONFIG[:redis]
   config.rkey = APP_CONFIG[:redis_key]
+  config.id_size = APP_CONFIG[:id_size]
 end
