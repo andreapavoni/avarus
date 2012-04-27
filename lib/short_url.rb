@@ -1,7 +1,7 @@
 require 'redis'
 
 class ShortUrl
-  Config = Struct.new(:redis, :rkey, :id_size)
+  Config = Struct.new(:redis, :rkey)
 
   attr_accessor :url, :id
 
@@ -20,7 +20,7 @@ class ShortUrl
     end
 
     def config
-      @config ||= Config.new(Redis.new, 'shorturl', 4)
+      @config ||= Config.new(Redis.new, 'shorturl')
     end
 
     def find(id)
@@ -76,10 +76,9 @@ class ShortUrl
   end
 
   def generate_id
-    chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
-
     loop do
-      new_id = chars.split('').sample(4).join
+      seed = Time.now.to_i + @config.redis.incr("#{@config.rkey}.counter")
+      new_id = base62(seed)
       return new_id unless self.class.find(new_id)
     end
   end
@@ -93,6 +92,19 @@ class ShortUrl
 
   def validate_url_uniqueness
     self.class.find_by_url(@url) ? false : true
+  end
+
+  def base62(num)
+    # adapted from http://refactormycode.com/codes/125-base-62-encoding
+    chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+
+    return '0' if num == 0
+    enc = ''
+    while num > 0
+      enc << chars[num.modulo(62)]
+      num /= 62
+    end
+    enc.reverse!
   end
 
 end

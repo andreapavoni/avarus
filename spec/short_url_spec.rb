@@ -30,27 +30,21 @@ describe ShortUrl do
     describe ".configure" do
       it "sets configuration keys" do
         custom_rkey = 'mytestkey'
-        custom_id_size = 8
 
         ShortUrl.configure do |config|
           config.rkey = custom_rkey
-          config.id_size = custom_id_size
         end
 
         ShortUrl.config.rkey.wont_equal APP_CONFIG[:redis_key]
-        ShortUrl.config.id_size.wont_equal APP_CONFIG[:id_size]
 
         ShortUrl.config.rkey.must_equal custom_rkey
-        ShortUrl.config.id_size.must_equal custom_id_size
 
         # back to default settings
         ShortUrl.configure do |config|
           config.rkey = APP_CONFIG[:redis_key]
-          config.id_size = APP_CONFIG[:id_size]
         end
 
         ShortUrl.config.rkey.must_equal APP_CONFIG[:redis_key]
-        ShortUrl.config.id_size.must_equal APP_CONFIG[:id_size]
       end
     end
 

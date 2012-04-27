@@ -1,6 +1,5 @@
 common: &common
   :redis_key: "avarus"
-  :id_size: 4
 
 production:
   <<: *common

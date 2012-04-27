@@ -15,5 +15,4 @@ require 'lib/short_url'
 ShortUrl.configure do |config|
   config.redis = Redis.new APP_CONFIG[:redis]
   config.rkey = APP_CONFIG[:redis_key]
-  config.id_size = APP_CONFIG[:id_size]
 end
